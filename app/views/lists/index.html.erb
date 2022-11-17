@@ -1,6 +1,13 @@
-<h1>All lists</h1>
-<ul>
-  <% @lists.each do |list| %>
-    <li><%= link_to list.name ,  list_path(list) %></li>
-    <% end %>
-</ul>
+  <div class="container">
+    <div class="row d-flex justify-content-between">
+        <% @lists.each do |list| %>
+            <div class="card-category col-3" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+                <%= link_to list.name ,  list_path(list) %>
+                <%= link_to "Delete", list_path(list), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+            </div>
+          <% end %>
+    </div>
+    <div class="m-3">
+      <%= link_to "Create a list", new_list_path, class: 'btn-flat' %>
+    </div>
+  </div>
